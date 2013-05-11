@@ -1,0 +1,3 @@
+pwd (显示目前所在的目录)
+[centoslive@livedvd ~]$ pwd
+/home/centoslive

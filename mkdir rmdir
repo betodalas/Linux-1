@@ -1,0 +1,22 @@
+mkdir (创建新目录)
+[centoslive@livedvd tmp]$ mkdir test
+[centoslive@livedvd tmp]$ ls
+keyring-XCu7YB    pulse-VkLdPhTTXNr7  virtual-centoslive.erOfJv
+orbit-centoslive  pulse-ZDp1wSF3t1Uy
+orbit-gdm         test
+[centoslive@livedvd tmp]$ ls -l
+drwxrwxr-x. 2 centoslive centoslive  40 May 11 10:48 test
+
+
+不过，现在有个更简单有效的方法啦！那就是加上 -p 这个选项喔！你可以直接下达：『 mkdir -p /home/bird/testing/test1 』 则系统会自动的帮你将 /home, /home/bird, /home/bird/testing 依序的创建起目录！并且， 如果该目录本来就已经存在时，系统也不会显示错误信息喔！挺快乐的吧！ ^_^。 不过鸟哥不建议常用-p这个选项，因为担心如果你打错字，那么目录名称就会变的乱七八糟的！
+
+rmdir (删除『空』的目录)
+如果想要删除旧有的目录时，就使用rmdir吧！例如将刚刚创建的test杀掉，使用『 rmdir test 』即可！请注意呦！目录需要一层一层的删除才行！而且被删除的目录里面必定不能存在其他的目录或文件！ 这也是所谓的空的目录(empty directory)的意思啊！那如果要将所有目录下的东西都杀掉呢？！ 这个时候就必须使用『 rm -r test 』罗！不过，还是使用 rmdir 比较不危险！你也可以尝试以 -p 的选项加入，来删除上一级的目录喔！
+Delete all empty folder
+[centoslive@livedvd tmp]$ rmdir -p test/t1
+[centoslive@livedvd tmp]$ ls
+keyring-XCu7YB    orbit-gdm           pulse-ZDp1wSF3t1Uy
+orbit-centoslive  pulse-VkLdPhTTXNr7  virtual-centoslive.erOfJv
+Deleted t1 and parent folder test
+-p, --parents   remove DIRECTORY and its ancestors; e.g., `rmdir -p a/b/c' is
+                    similar to `rmdir a/b/c a/b a'

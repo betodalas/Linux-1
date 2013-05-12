@@ -66,3 +66,53 @@ Deleted t1 and parent folder test
 [centoslive@livedvd ~]$ pwd
 /home/centoslive
 
+5.文件内容查阅
+    cat  由第一行开始显示文件内容
+    tac  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！
+    nl   显示的时候，顺道输出行号！
+    more 一页一页的显示文件内容
+    less 与 more 类似，但是比 more 更好的是，他可以往前翻页！
+    head 只看头几行
+    tail 只看尾巴几行
+    od   以二进位的方式读取文件内容！
+范例一：检阅 /etc/issue 这个文件的内容
+[devin@livedvd Desktop]$ cat /etc/issue
+CentOS release 6.3 (Final)
+Kernel \r on an \m
+
+范例二：承上题，如果还要加印行号呢？
+[devin@livedvd Desktop]$ cat -n /etc/issue
+     1  CentOS release 6.3 (Final)
+     2	Kernel \r on an \m
+     3
+
+more (一页一页翻动)
+[root@www ~]# more /etc/man.config
+#
+# Generated automatically from man.conf.in by the
+# configure script.
+#
+# man.conf from man-1.6d
+....(中间省略)....
+--More--(28%)  <== 重点在这一行喔！你的光标也会在这里等待你的命令
+
+6. 文件档名的搜寻
+whereis (寻找特定文件)
+[root@www ~]# whereis ifconfig 
+ifconfig: /sbin/ifconfig /usr/share/man/man8/ifconfig.8.gz
+
+locate
+范例一：找出系统中所有与 passwd 相关的档名
+[root@www ~]# locate passwd
+/etc/passwd
+/etc/passwd-
+/etc/news/passwd.nntp
+/etc/pam.d/passwd
+locate 寻找的数据是由『已创建的数据库 /var/lib/mlocate/』 里面的数据所搜寻到的
+手动升级数据库:updatedb：根据 /etc/updatedb.conf 的配置去搜寻系统硬盘内的档名，并升级 /var/lib/mlocate 内的数据库文件；
+
+find
+范例三：搜寻 /home 底下属於 vbird 的文件
+[root@www ~]# find /home -user devin
+# 这个东西也很有用的～当我们要找出任何一个使用者在系统当中的所有文件时，
+# 就可以利用这个命令将属於某个使用者的所有文件都找出来喔！
